@@ -1,14 +1,18 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
+import { CardTypeType } from "./Card";
 import Label from "./Label";
+import dayjs from "dayjs";
 
 type DetailsType = {
-  time: string;
+  type: CardTypeType;
+  date: string;
   location: string;
   city: string;
 };
 
 const useStyles = createUseStyles({
+  date: { marginBottom: "0.5rem" },
   time: { marginBottom: "0.25rem" },
   location: { marginBottom: "0.125rem" },
   city: { marginBottom: "0.125rem", textTransform: "uppercase" },
@@ -20,14 +24,30 @@ const useStyles = createUseStyles({
 const Details = (props: DetailsType) => {
   const classes = useStyles();
 
-  const { time, location, city } = props;
+  const { type, date, location, city } = props;
 
   return (
     <div>
-      <Label size="xl" fontWeight="bold" className={classes.time}>
-        {time}
+      <Label
+        size="xl"
+        fontWeight={type === "sellable" ? "bold" : null}
+        className={classes.time}
+      >
+        {dayjs(date).format("hh:mma")}
       </Label>
-      <Label size="lg" color="secondary" className={classes.location}>
+
+      {type === "summary" && (
+        <Label color="tertiary" className={classes.date}>
+          {dayjs(date).format("ddd, MMM D")}
+        </Label>
+      )}
+
+      <Label
+        size={type === "sellable" ? "lg" : "md"}
+        fontWeight={type === "sellable" ? null : "bold"}
+        color="secondary"
+        className={classes.location}
+      >
         {location}
       </Label>
       <Label color="tertiary" size="xs" className={classes.city}>

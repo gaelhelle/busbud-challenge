@@ -1,14 +1,19 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
+import { CardDataType } from "../../pages";
 import { theme } from "../../theme";
-import Amenities, { AmenitiesItems } from "./Amenities";
+import { AmenitiesItems } from "./Amenities";
+import CardHeader from "./CardHeader";
 import Chip from "./Chip";
 import Details from "./Details";
 import FooterItem from "./FooterItem";
 
+export type CardTypeType = "sellable" | "summary"; // Sorry for this naming
+
 type CardType = {
-  fastest: boolean;
-  type?: "sellable" | "summary";
+  fastest?: boolean;
+  type?: CardTypeType;
+  data: CardDataType;
 };
 
 const useStyles = createUseStyles({
@@ -63,8 +68,13 @@ const useStyles = createUseStyles({
 
 const Card = (props: CardType) => {
   const classes = useStyles();
+  const { fastest, type = "sellable", data } = props;
 
-  const { fastest, type = "sellable" } = props;
+  const amenities = [
+    AmenitiesItems.wifi,
+    AmenitiesItems.toilets,
+    AmenitiesItems.eticket,
+  ];
 
   return (
     <div className={`${classes.card} ${fastest && classes.fastest}`}>
@@ -74,26 +84,24 @@ const Card = (props: CardType) => {
         </div>
       )}
       <div className={classes.cardContent}>
-        <header className={classes.cardHeader}>
-          <div>
-            <img src="./assets/img/logos/greyhound.png" height="24" />
-          </div>
-          <Amenities
-            amenities={[
-              AmenitiesItems.wifi,
-              AmenitiesItems.toilets,
-              AmenitiesItems.eticket,
-            ]}
-          />
-        </header>
+        <CardHeader
+          operatorLogo="./assets/img/logos/greyhound.png"
+          amenities={amenities}
+        />
         <main className={classes.cardMain}>
           <Details
-            time="8:00am"
-            location="Port Authority"
-            city="New York City"
+            type={type}
+            date={data?.departure?.date}
+            location={data?.departure?.location}
+            city={data?.departure?.city}
           />
           <img src="./assets/img/timeArrow-icon.svg" />
-          <Details time="12:30pm" location="Union Station" city="Washington" />
+          <Details
+            type={type}
+            date={data?.arrival?.date}
+            location={data?.arrival?.location}
+            city={data?.arrival?.city}
+          />
         </main>
         <footer className={classes.cardFooter}>
           <div className={classes.cardFooterItemList}>

@@ -3,7 +3,7 @@ import { createUseStyles } from "react-jss";
 import { theme } from "../../theme";
 
 type SizeType = "xxl" | "xl" | "lg" | "md" | "sm" | "xs" | "xxs";
-type BoldType = "default" | "bold" | "extrabold";
+type BoldType = "default" | "bold" | "extrabold" | null;
 type ColorType = "default" | "secondary" | "tertiary" | "link" | "white";
 
 type LabelType = {

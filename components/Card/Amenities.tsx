@@ -7,7 +7,7 @@ export enum AmenitiesItems {
   eticket = "eticket-icon.svg",
 }
 
-type AmenitiesType = {
+export type AmenitiesType = {
   amenities: AmenitiesItems[];
 };
 

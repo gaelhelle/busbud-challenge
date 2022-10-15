@@ -8,6 +8,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "dayjs": "^1.11.5",
     "jss": "^10.9.2",
     "next": "latest",
     "react": "17.0.2",
@@ -24,6 +25,8 @@
     "@storybook/manager-webpack5": "^6.5.12",
     "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "^0.0.13",
-    "babel-loader": "^8.2.5"
+    "@types/react": "18.0.21",
+    "babel-loader": "^8.2.5",
+    "typescript": "4.8.4"
   }
 }
