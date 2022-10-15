@@ -3,12 +3,13 @@ import { createUseStyles } from "react-jss";
 import { CardDataType } from "../../pages";
 import { theme } from "../../theme";
 import { AmenitiesItems } from "./Amenities";
+import CardFooter from "./CardFooter";
 import CardHeader from "./CardHeader";
+import CardMain from "./CardMain";
 import Chip from "./Chip";
-import Details from "./Details";
 import FooterItem from "./FooterItem";
 
-export type CardTypeType = "sellable" | "summary"; // Sorry for this naming
+export type CardTypeType = "sellable" | "summary" | undefined; // Sorry for this naming
 
 type CardType = {
   fastest?: boolean;
@@ -25,30 +26,6 @@ const useStyles = createUseStyles({
     padding: "0.5rem",
     borderRadius: 24,
     backgroundColor: "#fff",
-  },
-  cardHeader: {
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "space-between",
-    padding: "0.5rem",
-  },
-  cardMain: {
-    padding: `0.5rem 0.75rem`,
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "space-between",
-    marginBottom: "1.125rem",
-  },
-  cardFooter: {
-    paddingLeft: `0.5rem`,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  cardFooterItemList: {
-    display: "flex",
-    alignItems: "center",
-    gap: 6,
   },
   fastest: {
     border: "1px solid #A6F7C2",
@@ -88,41 +65,8 @@ const Card = (props: CardType) => {
           operatorLogo="./assets/img/logos/greyhound.png"
           amenities={amenities}
         />
-        <main className={classes.cardMain}>
-          <Details
-            type={type}
-            date={data?.departure?.date}
-            location={data?.departure?.location}
-            city={data?.departure?.city}
-          />
-          <img src="./assets/img/timeArrow-icon.svg" />
-          <Details
-            type={type}
-            date={data?.arrival?.date}
-            location={data?.arrival?.location}
-            city={data?.arrival?.city}
-          />
-        </main>
-        <footer className={classes.cardFooter}>
-          <div className={classes.cardFooterItemList}>
-            <FooterItem icon="./assets/img/bus-icon.svg" value="Bus" />
-            <FooterItem icon="./assets/img/clock-icon.svg" value="4h 30m" />
-            {type === "summary" && (
-              <FooterItem icon="./assets/img/passengers-icon.svg" value="2" />
-            )}
-          </div>
-          <div>
-            {type === "summary" ? (
-              <Chip value="Itinerary" icon="./assets/img/chip-arrow-gray.svg" />
-            ) : (
-              <Chip
-                value="$45"
-                type="primary"
-                icon="./assets/img/chip-arrow-blue.svg"
-              />
-            )}
-          </div>
-        </footer>
+        <CardMain type={type} data={data} />
+        <CardFooter type={type} />
       </div>
     </div>
   );

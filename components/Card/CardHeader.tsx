@@ -1,6 +1,6 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
-import Amenities, { AmenitiesItems, AmenitiesType } from "./Amenities";
+import Amenities, { AmenitiesItems } from "./Amenities";
 
 type CardHeaderType = {
   amenities: AmenitiesItems[];
