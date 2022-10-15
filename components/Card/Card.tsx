@@ -8,6 +8,7 @@ import CardHeader from "./CardHeader";
 import CardMain from "./CardMain";
 import Chip from "./Chip";
 import FooterItem from "./FooterItem";
+import MultipleBookinOptions from "./MultipleBookingOptions";
 
 export type CardTypeType = "sellable" | "summary" | undefined; // Sorry for this naming
 
@@ -41,6 +42,10 @@ const useStyles = createUseStyles({
     alignItems: "center",
     justifyContent: "center",
   },
+  isMultipleBookingOptions: {
+    border: "1px solid #A3E7FF",
+    backgroundColor: "#E6F6FF",
+  },
 });
 
 const Card = (props: CardType) => {
@@ -53,9 +58,17 @@ const Card = (props: CardType) => {
     AmenitiesItems.eticket,
   ];
 
+  <CardFooter type={type} data={data} />;
+
+  const isMultipleBookingOptions = data?.bookOptions?.length > 1;
+
   return (
-    <div className={`${classes.card} ${fastest && classes.fastest}`}>
-      {fastest && (
+    <div
+      className={`${classes.card} ${
+        fastest && !isMultipleBookingOptions && classes.fastest
+      } ${isMultipleBookingOptions && classes.isMultipleBookingOptions}`}
+    >
+      {fastest && !isMultipleBookingOptions && (
         <div className={classes.fastestContent}>
           <img src="./assets/img/fastest-icon.svg" /> Fastest
         </div>
@@ -66,8 +79,11 @@ const Card = (props: CardType) => {
           amenities={amenities}
         />
         <CardMain type={type} data={data} />
-        <CardFooter type={type} />
+        <CardFooter type={type} data={data} />
       </div>
+      {isMultipleBookingOptions && (
+        <MultipleBookinOptions options={data.bookOptions} />
+      )}
     </div>
   );
 };

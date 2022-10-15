@@ -49,3 +49,29 @@ Summary.args = {
     },
   },
 };
+
+export const MultiOptions = Template.bind({});
+MultiOptions.args = {
+  data: {
+    bookOptions: [
+      {
+        name: "Regular",
+        price: 45,
+      },
+      {
+        name: "First-class",
+        price: 95,
+      },
+    ],
+    departure: {
+      date: "2022-07-28T08:30:00-08:00",
+      location: "Port Authoriy",
+      city: "New York City",
+    },
+    arrival: {
+      date: "2022-07-30T12:30:00-08:00",
+      location: "Union Station",
+      city: "Washington",
+    },
+  },
+};

@@ -17,6 +17,12 @@ const useStyles = createUseStyles({
     justifyContent: "space-between",
     marginBottom: "1.125rem",
   },
+  arrow: {
+    margin: "0 1rem",
+    // Not sure about the spacing here,
+    // marginLeft: "1rem",
+    // marginRight: "10%",
+  },
 });
 
 const CardMain = (props: CardMainType) => {
@@ -31,7 +37,7 @@ const CardMain = (props: CardMainType) => {
         location={data?.departure?.location}
         city={data?.departure?.city}
       />
-      <img src="./assets/img/timeArrow-icon.svg" />
+      <img src="./assets/img/timeArrow-icon.svg" className={classes.arrow} />
       <Details
         type={type}
         date={data?.arrival?.date}

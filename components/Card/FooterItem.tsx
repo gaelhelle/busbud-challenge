@@ -1,6 +1,7 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
 import { theme } from "../../theme";
+import Label from "./Label";
 
 type FooterItemType = {
   icon: string;
@@ -25,7 +26,7 @@ const FooterItem = (props: FooterItemType) => {
   return (
     <div className={classes.item}>
       <img src={icon} height="24" width="24" className={classes.icon} />
-      <div>{value}</div>
+      <Label>{value}</Label>
     </div>
   );
 };

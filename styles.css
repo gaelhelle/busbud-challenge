@@ -9,6 +9,8 @@ body {
 
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -56,4 +58,12 @@ button {
   font-weight: 800;
   font-style: normal;
   font-display: swap;
+}
+
+/* Next App only */
+html,
+body,
+#__next {
+  height: 100%;
+  width: 100%;
 }

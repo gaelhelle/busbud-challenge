@@ -5,7 +5,7 @@ import Label from "./Label";
 
 type ChipType = {
   value: string;
-  type?: "default" | "primary";
+  type?: "default" | "primary" | "secondary";
   icon?: string;
 };
 
@@ -31,6 +31,10 @@ const useStyles = createUseStyles({
     color: "#fff",
     backgroundColor: theme.primary,
   },
+  secondary: {
+    color: theme.textPrimary,
+    backgroundColor: "#D4F0FF",
+  },
   icon: {
     "& img": {
       display: "block",
@@ -44,8 +48,10 @@ const Chip = (props: ChipType) => {
 
   return (
     <button
-      className={`${classes.chip} ${icon && classes.chipWithIcon} ${
-        type === "primary" ? classes.primary : classes.default
+      className={`${classes.chip} ${classes.default} ${
+        icon && classes.chipWithIcon
+      } ${type === "primary" && classes.primary} ${
+        type === "secondary" && classes.secondary
       }`}
     >
       <Label color="white" size="lg" fontWeight="bold">
