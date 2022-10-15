@@ -30,6 +30,7 @@ const Details = (props: DetailsType) => {
     <div>
       <Label
         size="xl"
+        color="primary"
         fontWeight={type === "sellable" ? "bold" : null}
         className={classes.time}
       >

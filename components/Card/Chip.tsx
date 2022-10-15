@@ -19,6 +19,7 @@ const useStyles = createUseStyles({
     cursor: "pointer",
     display: "flex",
     alignItems: "center",
+    color: theme.textPrimary,
   },
   chipWithIcon: {
     paddingRight: "0.75rem",

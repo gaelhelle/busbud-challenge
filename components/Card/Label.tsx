@@ -4,7 +4,7 @@ import { theme } from "../../theme";
 
 type SizeType = "xxl" | "xl" | "lg" | "md" | "sm" | "xs" | "xxs";
 type BoldType = "default" | "bold" | "extrabold" | null;
-type ColorType = "default" | "secondary" | "tertiary" | "link" | "white";
+type ColorType = "primary" | "secondary" | "tertiary" | "link" | "white";
 
 type LabelType = {
   size?: SizeType;
@@ -29,6 +29,9 @@ const useStyles = createUseStyles({
   extrabold: {
     fontWeight: 800,
   },
+  primary: {
+    color: theme.textPrimary,
+  },
   secondary: {
     color: theme.textSecondary,
   },
@@ -47,7 +50,7 @@ const Label = (props: LabelType) => {
   const {
     size = "md",
     fontWeight = "default",
-    color = "default",
+    color = "primary",
     children,
     className,
   } = props;
@@ -86,8 +89,8 @@ const Label = (props: LabelType) => {
 
   const applyColor = (color: ColorType) => {
     switch (color) {
-      case "default":
-        return null;
+      case "primary":
+        return classes.primary;
       case "secondary":
         return classes.secondary;
       case "tertiary":
