@@ -131,7 +131,7 @@ export default function Home() {
               ></path>
             </svg>
           </div>
-          <div>Challenge - UI Designer Position</div>
+          <div>Challenge - UI Developer Position</div>
           <div className={classes.cards}>
             <div className={classes.card}>
               <Card data={data} />

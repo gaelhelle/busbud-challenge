@@ -9,7 +9,7 @@
 <br />
 <div align="center">
 
-  <h3 align="center">BusBud - Challenge UI Designer</h3>
+  <h3 align="center">BusBud - Challenge UI Developer</h3>
 </div>
 
 <!-- ABOUT THE PROJECT -->
